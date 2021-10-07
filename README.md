@@ -38,17 +38,17 @@ mvn spring-boot:run
 ```
 example: 
 ###Postman
-* ####'Saldo':
+* #### 'Saldo':
   * Method: GET
   * http://localhost:8080/accounts/14537780/balance
-* ####'Lista di transazioni':
+* #### 'Lista di transazioni':
     * Method: GET
     * http://localhost:8080/accounts/14537780/transactions?fromAccountingDate=2019-01-01&toAccountingDate=2019-12-01
-* ####'Bonifico':
+* #### 'Bonifico':
     * Method: POST
     * http://localhost:8080/accounts/14537780/money-transfers
     * Body-row:
-      *` {"creditor":{
+      ` {"creditor":{
         "name":"GIANNI",
         "account":{
         "accountCode":"IT23A0336844430152923804660",
