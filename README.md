@@ -32,7 +32,7 @@ mvn clean install
 Initially run ``mvn install`` rather than ``mvn package`` or ``mvn install -DskipTests`` as this application uses sub maven modules.
 (Note that maven install also runs integration tests)
 
-### Local Tests (Postman or a browser)
+### Local Tests (Postman)
 
 ``` manifest
 mvn spring-boot:run
