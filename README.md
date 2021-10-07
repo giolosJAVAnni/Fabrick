@@ -2,16 +2,14 @@
 
 ## Overview
 
-"OperationsCC" is a Rest Controller that implements the operations that uses the 'Fabrick API':
+**_OperationsCC_** is a Rest Controller that implements some operations that _use/consume_ the Fabrick API:
  * _Lettura saldo_
  * _Lista di transazioni_
  * _Bonifico_
 
 Data storage is done in an H2 DB (for saving and historicization data)
 
-
 ###Software Architecture
-
 * Java 11/ maven
 * Spring Boot/Web
 * REST controller with management response in agreed JSON format
