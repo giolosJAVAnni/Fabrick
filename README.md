@@ -9,7 +9,7 @@
 
 Data storage is done in an H2 DB (for saving and historicization data)
 
-###Software Architecture
+## Software Architecture
 * Java 11/ maven
 * Spring Boot/Web
 * REST controller with management response in agreed JSON format
