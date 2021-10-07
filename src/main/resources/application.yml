@@ -1,0 +1,21 @@
+api:
+    url: ${API_URL:https://sandbox.platfr.io/api/gbs/banking/v4.0}
+    key:  ${API_KEY:FXOVVXXHVCPVPBZXIJOBGUGSKHDNFRRQJP}
+    auth:
+      schema: ${AUTH_SCHEMA:S2S}
+
+
+
+datasources:
+
+  default:
+#  h2:
+    #url: jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:mem:devDb;INIT=create domain if not exists jsonb as text;MODE=PostgreSQL;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+    driverClassName: org.h2.Driver
+    username: sa
+    password: ''
+    schema-generate: CREATE_DROP
+    dialect: H2
+
+jpa.default.properties.hibernate.hbm2ddl.auto: update
