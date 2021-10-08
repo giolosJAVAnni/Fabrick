@@ -84,12 +84,12 @@ L449	Ristrutturazione.
     @Override
     public String toString() {
         return "TaxReliefData{" +
-                "taxReliefId='" + taxReliefId + '\'' +
+                "taxReliefId='" + getTaxReliefId() + '\'' +
                 ", isCondoUpgrade=" + condoUpgrade +
-                ", creditorFiscalCode='" + creditorFiscalCode + '\'' +
-                ", beneficiaryType='" + beneficiaryType + '\'' +
-                ", naturalPersonBeneficiary=" + naturalPersonBeneficiary +
-                ", legalPersonBeneficiary=" + legalPersonBeneficiary +
+                ", creditorFiscalCode='" + getCreditorFiscalCode() + '\'' +
+                ", beneficiaryType='" + getBeneficiaryType() + '\'' +
+                ", naturalPersonBeneficiary=" + getNaturalPersonBeneficiary() +
+                ", legalPersonBeneficiary=" + getLegalPersonBeneficiary() +
                 '}';
     }
 }

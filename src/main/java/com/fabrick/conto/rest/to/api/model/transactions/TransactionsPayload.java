@@ -20,7 +20,7 @@ public class TransactionsPayload {
     @Override
     public String toString() {
         return "TransactionsPayload{" +
-                "list=" + list +
+                "list=" + getList() +
                 '}';
     }
 }

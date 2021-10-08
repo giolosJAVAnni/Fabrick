@@ -93,20 +93,20 @@ public class TransactionData {
     @Override
     public String toString() {
         return "AccountData{" +
-                "transactionId='" + transactionId + '\'' +
-                ", operationId='" + operationId + '\'' +
-                ", accountingDate=" + accountingDate +
-                ", valueDate=" + valueDate +
-                ", type=" + type +
-                ", amount=" + amount +
-                ", currency='" + currency + '\'' +
-                ", description='" + description + '\'' +
+                "transactionId='" + getTransactionId() + '\'' +
+                ", operationId='" + getOperationId() + '\'' +
+                ", accountingDate=" + getAccountingDate() +
+                ", valueDate=" + getValueDate() +
+                ", type=" + getType() +
+                ", amount=" + getAmount() +
+                ", currency='" + getCurrency() + '\'' +
+                ", description='" + getDescription() + '\'' +
                 '}';
     }
 
 
     // I don't know the values of the 'Enumeration', so...
-    static class TypeTransaction
+    public static class TypeTransaction
     {
         public TypeTransaction(@JsonProperty("enumeration") String enumeration, @JsonProperty("value") String value){
             this.enumeration=enumeration;
@@ -137,8 +137,8 @@ public class TransactionData {
         @Override
         public String toString() {
             return "TypeTransaction{" +
-                    "enumeration='" + enumeration + '\'' +
-                    ", value='" + value + '\'' +
+                    "enumeration='" + getEnumeration() + '\'' +
+                    ", value='" + getValue() + '\'' +
                     '}';
         }
     }

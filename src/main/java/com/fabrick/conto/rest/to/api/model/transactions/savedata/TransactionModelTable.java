@@ -11,10 +11,10 @@ public class TransactionModelTable {
     public TransactionModelTable() { }
     public TransactionModelTable(Long accountId, String data, String accountingDate)
     {
-     this.accountId = accountId;
-     this.data = data;
-     this.accountingDate = accountingDate;
-     this.createdAt = Timestamp.from(Instant.now());
+     setAccountId(accountId);
+     setData(data);
+     setAccountingDate(accountingDate);
+     setCreatedAt(Timestamp.from(Instant.now()));
     }
 
     @Id
@@ -78,11 +78,11 @@ public class TransactionModelTable {
     @Override
     public String toString() {
         return "TransactionModelTable{" +
-                "id=" + id +
-                ", accountId=" + accountId +
-                ", data='" + data + '\'' +
-                ", createdAt=" + createdAt +
-                ", accountingDate='" + accountingDate + '\'' +
+                "id=" + getId() +
+                ", accountId=" + getAccountId() +
+                ", data='" + getData() + '\'' +
+                ", createdAt=" + getCreatedAt() +
+                ", accountingDate='" + getAccountingDate() + '\'' +
                 '}';
     }
 }

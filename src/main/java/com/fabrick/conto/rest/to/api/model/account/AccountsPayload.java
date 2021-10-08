@@ -21,7 +21,7 @@ public class AccountsPayload {
     @Override
     public String toString() {
         return "AccountsPayload{" +
-                "list=" + list +
+                "list=" + getList() +
                 '}';
     }
 }

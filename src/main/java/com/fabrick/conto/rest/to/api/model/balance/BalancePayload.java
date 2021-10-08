@@ -56,10 +56,10 @@ public class BalancePayload {
     @Override
     public String toString() {
         return "BalanceApiResponse{" +
-                "date=" + date +
-                ", balance=" + balance +
-                ", availableBalance=" + availableBalance +
-                ", currency='" + currency + '\'' +
+                "date=" + getDate() +
+                ", balance=" + getBalance() +
+                ", availableBalance=" + getAvailableBalance() +
+                ", currency='" + getCurrency() + '\'' +
                 '}';
     }
 

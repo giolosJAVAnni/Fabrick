@@ -144,19 +144,19 @@ public class AccountData {
     @Override
     public String toString() {
         return "AccountData{" +
-                "accountId='" + accountId + '\'' +
-                ", iban='" + iban + '\'' +
-                ", abiCode='" + abiCode + '\'' +
-                ", cabCode='" + cabCode + '\'' +
-                ", countryCode='" + countryCode + '\'' +
-                ", internationalCin='" + internationalCin + '\'' +
-                ", nationalCin='" + nationalCin + '\'' +
-                ", account='" + account + '\'' +
-                ", alias='" + alias + '\'' +
-                ", productName='" + productName + '\'' +
-                ", holderName='" + holderName + '\'' +
-                ", activatedDate=" + activatedDate +
-                ", currency='" + currency + '\'' +
+                "accountId='" + getAccountId() + '\'' +
+                ", iban='" + getIban() + '\'' +
+                ", abiCode='" + getAbiCode() + '\'' +
+                ", cabCode='" + getCabCode() + '\'' +
+                ", countryCode='" + getCountryCode() + '\'' +
+                ", internationalCin='" + getInternationalCin() + '\'' +
+                ", nationalCin='" + getNationalCin() + '\'' +
+                ", account='" + getAccount() + '\'' +
+                ", alias='" + getAlias() + '\'' +
+                ", productName='" + getProductName() + '\'' +
+                ", holderName='" + getHolderName() + '\'' +
+                ", activatedDate=" + getActivatedDate() +
+                ", currency='" + getCurrency() + '\'' +
                 '}';
     }
 

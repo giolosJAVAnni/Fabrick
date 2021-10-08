@@ -19,3 +19,5 @@ datasources:
     dialect: H2
 
 jpa.default.properties.hibernate.hbm2ddl.auto: update
+
+history.months: 12

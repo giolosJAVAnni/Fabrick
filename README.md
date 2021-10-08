@@ -16,6 +16,7 @@ Data storage is done in an H2 DB (for saving and historicization data)
 * mvn failsafe plugin for integration tests
 * Logging
 * Spring Data JPA
+* Jacoco code coverage - report generated in target/site/jacoco
 
 ## Getting Started
 

@@ -8,6 +8,8 @@ import com.fabrick.conto.rest.to.api.model.transactions.savedata.TransactionHist
 import com.fabrick.conto.rest.to.api.model.transactions.savedata.TransactionModelTable;
 import com.fabrick.conto.rest.to.api.model.transactions.savedata.TransactionRepository;
 import com.fabrick.conto.rest.to.api.model.transfer.BonificoApiRequest;
+import com.fabrick.conto.rest.to.api.utility.Utils;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -37,11 +39,19 @@ public class OperationsServiceImpl implements OperationsService {
     @Value("${api.url}")
     String apiUrl;
 
+
     // Repository: Save and Historicize Data Transactions
     @Autowired
     TransactionRepository repository;
     @Autowired
     TransactionHistoryRepository repositoryHistory;
+
+    @Autowired
+    Utils utils;
+
+    @Value("${history.months}")
+    long numMonths;
+
 
     private static final Logger log = LoggerFactory.getLogger(OperationsServiceImpl.class);
 
@@ -89,7 +99,8 @@ public class OperationsServiceImpl implements OperationsService {
             saveData(resp, accountId);
 
             // Historicize Data
-            historicizeData(accountId, "2019-10-11");
+            //historicizeData(accountId, "2019-10-11");
+            historicizeData(accountId, utils.getCurrentDateMinusMonths(numMonths).toString());
             // *********************************************************
 
        } catch (Exception ex) {
@@ -113,7 +124,7 @@ public class OperationsServiceImpl implements OperationsService {
             HttpEntity<String> entity = new HttpEntity<String>(requestPost.jsonToString(), clientApi.getHeaders());
             resp = restTemplate.exchange(apiUrl + "/accounts/" + accountId + "/payments/money-transfers",
                                                     HttpMethod.POST,entity,Object.class);
-            log.info("[OperationsServiceImpl] - moneyTransfer - response call: {}",resp);
+            //log.info("[OperationsServiceImpl] - moneyTransfer - response call: {}",resp);
         } catch (Exception ex) {
             // Manage response for test case...
             String msg = ex.getMessage();
@@ -130,10 +141,15 @@ public class OperationsServiceImpl implements OperationsService {
     @Transactional
     public void saveData(ResponseEntity<String> response, Long accountId){
         // *********************** save transaction init ***********************
-        try {
+        //try {
             ObjectMapper mapper = new ObjectMapper();
-            String respStr = mapper.writeValueAsString(response.getBody());
-            //log.info("respStr -------->{}", respStr);
+        String respStr = null;
+        try {
+            respStr = mapper.writeValueAsString(response.getBody());
+        } catch (JsonProcessingException e) {
+            log.error("[saveData] - error: {}", e.getMessage());
+        }
+        //log.info("respStr -------->{}", respStr);
 
             JSONObject myObject = new JSONObject(respStr);
             JSONObject payload = myObject.getJSONObject("payload");
@@ -157,9 +173,9 @@ public class OperationsServiceImpl implements OperationsService {
 
             // *********************** save transaction end ***********************
 
-        }catch(Exception e){
-            log.error("[saveData] - error: {}", e.getMessage());
-        }
+        //}catch(Exception e){
+        //    log.error("[saveData] - error: {}", e.getMessage());
+        //}
     }
 
 
@@ -167,9 +183,9 @@ public class OperationsServiceImpl implements OperationsService {
     @Transactional
     public void historicizeData(Long accountId, String accountingDateBefore){
 
-        try {
+        //try {
             List<TransactionModelTable> listToBeHistory = repository.findAllByAccountingDateBefore(accountingDateBefore);
-            log.info("dal DB listHistory--------------------->{}", listToBeHistory);
+            //log.info("dal DB listHistory--------------------->{}", listToBeHistory);
 
             List<TransactionHistoryModelTable> listIntoHistory = new ArrayList<>();
             TransactionHistoryModelTable appoData;
@@ -178,18 +194,18 @@ public class OperationsServiceImpl implements OperationsService {
             }
 
             repositoryHistory.saveAll(listIntoHistory);
-            log.info("from DB History--------------------->{}", repositoryHistory.findByAccountId(accountId));
+            //log.info("from DB History--------------------->{}", repositoryHistory.findByAccountId(accountId));
 
             repository.deleteAll(listToBeHistory);
-            log.info("from DB after DELETE--------------------->{}", repository.findByAccountId(accountId));
+            //log.info("from DB after DELETE--------------------->{}", repository.findByAccountId(accountId));
 
 
             log.info("Count repository (After DELETE)--------------------->{}", repository.count());
             log.info("Count repositoryHistory--------------------->{}", repositoryHistory.count());
 
-        }catch(Exception e){
-            log.error("[historicizeData] - error: {}", e.getMessage());
-        }
+        //}catch(Exception e){
+        //    log.error("[historicizeData] - error: {}", e.getMessage());
+        //}
     }
 
 }

@@ -54,10 +54,10 @@ public class BonificoApiRequest {
 
 
     // enum...
-    enum FeeType
-    {
-        SHA, OUR, BEN
-    }
+    //enum FeeType
+    //{
+    //    SHA, OUR, BEN
+    //}
 
     public CreditorData getCreditor() {
         return creditor;
@@ -147,17 +147,17 @@ public class BonificoApiRequest {
     @Override
     public String toString() {
         return "BonificoApiRequest{" +
-                "creditor=" + creditor +
-                ", executionDate=" + executionDate +
-                ", uri='" + uri + '\'' +
-                ", description='" + description + '\'' +
-                ", amount=" + amount +
-                ", currency='" + currency + '\'' +
+                "creditor=" + getCreditor() +
+                ", executionDate=" + getExecutionDate() +
+                ", uri='" + getUri() + '\'' +
+                ", description='" + getDescription() + '\'' +
+                ", amount=" + getAmount() +
+                ", currency='" + getCurrency() + '\'' +
                 ", isUrgent=" + urgent +
                 ", isInstant=" + instant +
-                ", feeType='" + feeType + '\'' +
-                ", feeAccountId='" + feeAccountId + '\'' +
-                ", taxRelief=" + taxRelief +
+                ", feeType='" + getFeeType() + '\'' +
+                ", feeAccountId='" + getFeeAccountId() + '\'' +
+                ", taxRelief=" + getTaxRelief() +
                 '}';
     }
 

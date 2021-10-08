@@ -39,9 +39,9 @@ public class CreditorData {
     @Override
     public String toString() {
         return "CreditorData{" +
-                "name='" + name + '\'' +
-                ", account=" + account +
-                ", address=" + address +
+                "name='" + getName() + '\'' +
+                ", account=" + getAccount() +
+                ", address=" + getAddress() +
                 '}';
     }
 }

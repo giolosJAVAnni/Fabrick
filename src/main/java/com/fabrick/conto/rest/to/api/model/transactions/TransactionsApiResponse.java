@@ -42,13 +42,13 @@ public class TransactionsApiResponse {
     @Override
     public String toString() {
         return "AccountsApiResponse{" +
-                "status='" + status + '\'' +
-                ", error=" + error +
-                ", payload=" + payload +
+                "status='" + getStatus() + '\'' +
+                ", error=" + getError() +
+                ", payload=" + getPayload() +
                 '}';
     }
 
-    class ErrorCall {
+    public static class ErrorCall {
         @JsonProperty("code")
         String code;
         @JsonProperty("description")
@@ -83,9 +83,9 @@ public class TransactionsApiResponse {
         @Override
         public String toString() {
             return "ErrorCall{" +
-                    "code='" + code + '\'' +
-                    ", description='" + description + '\'' +
-                    ", params='" + params + '\'' +
+                    "code='" + getCode() + '\'' +
+                    ", description='" + getDescription() + '\'' +
+                    ", params='" + getParams() + '\'' +
                     '}';
         }
     }

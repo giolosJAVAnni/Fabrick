@@ -7,6 +7,7 @@ import com.fabrick.conto.rest.to.api.model.transactions.savedata.TransactionHist
 import com.fabrick.conto.rest.to.api.model.transactions.savedata.TransactionModelTable;
 import com.fabrick.conto.rest.to.api.model.transactions.savedata.TransactionRepository;
 import com.fabrick.conto.rest.to.api.model.transfer.*;
+import com.fabrick.conto.rest.to.api.utility.Utils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -47,6 +48,9 @@ class OperazioniContoTests {
 
 	@Autowired
 	TransactionHistoryRepository repositoryHistory;
+
+	@Autowired
+	Utils utils;
 
 	private static final Logger log = LoggerFactory.getLogger(OperazioniContoTests.class);
 
@@ -137,12 +141,16 @@ class OperazioniContoTests {
 			creditorData.setAddress(new CreditorAddress());
 
 			reqTest.setCreditor(creditorData);
+
+			/*
 			try
 			{
 				reqTest.setExecutionDate(new SimpleDateFormat("yyyy-MM-dd").parse("2021-10-05"));
 			} catch (ParseException e) {
 				log.error("Error parsing date: {}", e.getMessage());
 			}
+			*/
+			reqTest.setExecutionDate(utils.getCurrentDate());
 
 			reqTest.setDescription("TEST MONEY TRANSFER");
 			reqTest.setAmount(100F);
@@ -183,12 +191,15 @@ class OperazioniContoTests {
 			creditorData.setAddress(new CreditorAddress());
 
 			reqTest.setCreditor(creditorData);
+			/*
 			try
 			{
 				reqTest.setExecutionDate(new SimpleDateFormat("yyyy-MM-dd").parse("2021-10-05"));
 			} catch (ParseException e) {
 				log.error("Error parsing date: {}", e.getMessage());
 			}
+			*/
+			reqTest.setExecutionDate(utils.getCurrentDate());
 
 			reqTest.setDescription("TEST MONEY TRANSFER");
 			reqTest.setAmount(100F);
