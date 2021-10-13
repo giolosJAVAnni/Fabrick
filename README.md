@@ -17,6 +17,13 @@ Data storage is done in an H2 DB (for saving and historicization data)
 * Logging
 * Spring Data JPA
 
+## Environment Variables to set before running service in a centralized env
+* API_URL => Fabrick's API environement endpoint
+* API_KEY => Fabrick's key to use
+* AUTH_SCHEMA => Fabrick's Authorization Schema
+
+
+
 ## Getting Started
 
 ### Prerequisites
